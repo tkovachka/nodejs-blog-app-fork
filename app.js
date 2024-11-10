@@ -1,32 +1,32 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var methodOverride = require("method-override");
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost:27017/blog_app", {useNewUrlParser: true});
 
-var app = express();
+const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 
 // MONGOOSE MODEL CONFIG
-var blogSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema({
     title: String,
     image: String,
     body: String,
     created: {type: Date, default: Date.now}
 });
-var Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.model("Blog", blogSchema);
 
 // CREATE DUMMY DATA TO TEST
-// Blog.create({
-//     title: "First Blog Post",
-//     image: "https://images.unsplash.com/photo-1578403414495-5bb49bf9447b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
-//     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-// });
+Blog.create({
+    title: "First Blog Post",
+    image: "https://images.unsplash.com/photo-1578403414495-5bb49bf9447b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
+    body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+});
 
 // REST FUL ROUTES
 
@@ -87,7 +87,7 @@ app.get("/blogs/:id/edit", function(req, res) {
 
 // UPDATE ROUTE
 app.put("/blogs/:id", function(req, res) {
-    var id = req.params.id;
+    const id = req.params.id;
     Blog.findByIdAndUpdate(id, req.body.blog, function(err, blog) {
         if(err) {
             res.redirect("/blogs");
