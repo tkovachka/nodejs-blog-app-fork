@@ -2,9 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+require('dotenv').config();
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost:27017/blog_app", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/blog_app", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((error) => console.error("MongoDB connection error:", error));
 
 const app = express();
 app.set("view engine", "ejs");
@@ -22,11 +28,11 @@ const blogSchema = new mongoose.Schema({
 const Blog = mongoose.model("Blog", blogSchema);
 
 // CREATE DUMMY DATA TO TEST
-Blog.create({
-    title: "First Blog Post",
-    image: "https://images.unsplash.com/photo-1578403414495-5bb49bf9447b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
-    body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-});
+// Blog.create({
+//     title: "First Blog Post",
+//     image: "https://images.unsplash.com/photo-1578403414495-5bb49bf9447b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
+//     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+// });
 
 // REST FUL ROUTES
 
@@ -109,7 +115,7 @@ app.delete("/blogs/:id", function(req, res) {
 });
 
 const port = 3000;
-const ip = "127.0.0.1";
+const ip = "0.0.0.0";
 app.listen(port, ip, function() {
     console.log("Server is running ", ip, ":", port);
 });
