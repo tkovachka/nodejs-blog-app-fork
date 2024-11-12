@@ -1,5 +1,6 @@
 # DevOps Project: Full workflow from code to deployment and automatizating builds
 The aim of this project is to show the concept of DevOps on this simple NodeJS RESTful blog application that uses MongoDB database, developed by Dhruv Solanki.
+The project will go over dockerization, orchestration, CI/CD pipeline and more.
 
 ### Tech Stack
 * Node JS
