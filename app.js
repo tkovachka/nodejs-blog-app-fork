@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 require('dotenv').config();
 
+mongoose.set('strictQuery', true);
+
 // APP CONFIG
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/blog_app", {
     useNewUrlParser: true,
