@@ -1,5 +1,5 @@
-# nodejs-blog-app
-Simple Node JS RESTful blog web application with semantic UI designing and MongoDB database.
+# DevOps Project: Full workflow from code to deployment and automatizating builds
+The aim of this project is to show the concept of DevOps on this simple NodeJS RESTful blog application that uses MongoDB database, developed by Dhruv Solanki.
 
 ### Tech Stack
 * Node JS
@@ -17,15 +17,15 @@ Simple Node JS RESTful blog web application with semantic UI designing and Mongo
 
 ### RESTful Routes
 
-Name | Path | HTTP verb | Purpose
------|------|-----------|--------
-Index | /blogs | GET | List all blogs
-New | /blogs/new | GET | Show new blog form
-Create | /blogs | POST | Create a new blog
-Show | /blogs/:id | GET | Show info about one specific blog
-Edit | /blogs/:id/edit | GET | Shows edit form for one blog
-Update | /blogs/:id | PUT | Update a particular blog
-Delete | /blogs/:id | DELETE | Delete a particular blog
+| Name   | Path            | HTTP verb | Purpose                           |
+|--------|-----------------|-----------|-----------------------------------|
+| Index  | /blogs          | GET       | List all blogs                    |
+| New    | /blogs/new      | GET       | Show new blog form                |
+| Create | /blogs          | POST      | Create a new blog                 |
+| Show   | /blogs/:id      | GET       | Show info about one specific blog |
+| Edit   | /blogs/:id/edit | GET       | Shows edit form for one blog      |
+| Update | /blogs/:id      | PUT       | Update a particular blog          |
+| Delete | /blogs/:id      | DELETE    | Delete a particular blog          |
 
 ### Screen Shots
 1) Index Page
